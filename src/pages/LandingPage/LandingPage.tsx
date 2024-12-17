@@ -1,4 +1,5 @@
 import Button from "../../components/Button/button";
+import { Music } from "../../components/Music";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useMoviment3d } from "../../hooks/useMoviment3d";
 import {
@@ -15,6 +16,8 @@ const LandingPage = () => {
 
   return (
     <BackgroundContainer>
+      <Music />
+
       <Content>
         <TypingContainer>
           Seja bem-vindo ao <br />{" "}
