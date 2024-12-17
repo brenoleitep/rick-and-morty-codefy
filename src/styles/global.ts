@@ -15,11 +15,7 @@ export const GlobalStyles = createGlobalStyle`
 
   /* Font-family padrão */
   body {
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: ${({ theme }) => theme.colors.background || "#f8f8f8"};
-    color: ${({ theme }) => theme.colors.text || "#333"};
+    font-family: "Press Start 2P", cursive;
     margin: 0;
   }
 
@@ -45,7 +41,6 @@ export const GlobalStyles = createGlobalStyle`
   input, button {
     font-family: inherit;
     outline: none;
-    border: none;
   }
 
   button {
