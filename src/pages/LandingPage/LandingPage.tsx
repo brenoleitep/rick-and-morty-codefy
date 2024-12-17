@@ -1,3 +1,4 @@
+import gifRicky from "../../assets/giftest.gif";
 import Button from "../../components/Button/Button";
 import { Music } from "../../components/Music";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -37,7 +38,7 @@ const LandingPage = () => {
       </Content>
       <ImageContainer>
         {" "}
-        <img src="/public/giftest.gif" alt="Ricky and Morty saindo do portal" />
+        <img src={gifRicky} alt="Ricky and Morty saindo do portal" />
       </ImageContainer>
 
       {isMobile && (
