@@ -42,7 +42,7 @@ const LandingPage = () => {
 
       {isMobile && (
         <>
-          <Button text="Ver personagens" redirectTo="/persons" />
+          <Button text="Descubra tudo" redirectTo="/persons" />
         </>
       )}
     </BackgroundContainer>
