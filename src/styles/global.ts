@@ -17,6 +17,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Press Start 2P", cursive;
     margin: 0;
+    background-color: black;
   }
 
   /* Remove estilos padrão para listas */
