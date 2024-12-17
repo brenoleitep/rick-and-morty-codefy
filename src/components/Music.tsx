@@ -6,7 +6,7 @@ export const Music = () => {
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.play();
-      audioRef.current.volume = 0.1;
+      audioRef.current.volume = 1;
     }
   }, []);
 
