@@ -1,4 +1,5 @@
 import gifRicky from "../../assets/giftest.gif";
+import logo from "../../assets/logo.png";
 import Button from "../../components/Button/Button";
 import { Music } from "../../components/Music";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -6,7 +7,6 @@ import {
   BackgroundContainer,
   Content,
   ImageContainer,
-  SpanContainer,
   TypingContainer,
 } from "./landingPageStyles";
 
@@ -19,8 +19,7 @@ const LandingPage = () => {
 
       <Content>
         <TypingContainer>
-          Seja bem-vindo ao <br />{" "}
-          <SpanContainer>Rick And Morty: Ultimate</SpanContainer>
+          Seja bem-vindo ao <br /> <img src={logo} alt="Rick and Morty logo" />
         </TypingContainer>
 
         <p>
