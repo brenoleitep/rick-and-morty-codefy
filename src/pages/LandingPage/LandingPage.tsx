@@ -1,35 +1,62 @@
-import { BackgroundContainer, Content } from "./landingPageStyles";
+import { useEffect, useState } from "react";
+import Button from "../../components/Button/button";
+import {
+  BackgroundContainer,
+  Content,
+  ImageContainer,
+  SpanContainer,
+  TypingContainer,
+} from "./landingPageStyles";
 
 const LandingPage = () => {
+  const [movement, setMovement] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (event: MouseEvent) => {
+    const { clientX: mouseX, clientY: mouseY } = event;
+    setMovement({ x: mouseX, y: mouseY });
+  };
+
+  const handleTouchMove = (event: TouchEvent) => {
+    const { clientX: touchX, clientY: touchY } = event.touches[0];
+    setMovement({ x: touchX, y: touchY });
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+
+    window.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
+
   return (
     <BackgroundContainer>
       <Content>
-        <h2>Seja bem-vindo ao Rick and Morty: Ultimate.</h2>
+        <TypingContainer>
+          Seja bem-vindo ao <br />{" "}
+          <SpanContainer>Rick And Morty: Ultimate</SpanContainer>
+        </TypingContainer>
 
         <p>
-          Aqui você vai ter uma imersão completa do universo Rick and Morty.
-          Você poderá navegar por todos os personagens, podendo:
-        </p>
-
-        <ul>
-          <li>Pesquisar por nome e status</li>
-          <li>Navegar na lista de personagens</li>
-          <li>Visualizar o total de personagens do universo</li>
-          <li>Visualizar a página própria de um personagem específico</li>
-        </ul>
-
-        <p>
-          Se você não conhece Rick and Morty,{" "}
-          <a
-            href="https://www.adultswim.com/videos/rick-and-morty"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            clique aqui
-          </a>{" "}
-          para saber mais sobre.
+          Tudo o que você precisa saber sobre o universo Rick and Morty está
+          aqui.
         </p>
       </Content>
+
+      <ImageContainer movement={movement}>
+        {" "}
+        <img
+          src="/public/rickmortyportal.png"
+          alt="Ricky and Morty saindo do portal"
+        />
+      </ImageContainer>
+
+      <div>
+        <Button text="Ver personagens" redirectTo="/persons" />
+      </div>
     </BackgroundContainer>
   );
 };

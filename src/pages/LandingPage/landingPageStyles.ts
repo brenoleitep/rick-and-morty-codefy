@@ -3,49 +3,61 @@ import styled from "styled-components";
 export const BackgroundContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    background-image: url("/public/gif.gif");
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   position: relative;
   z-index: 1;
-  padding: 2rem;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.text};
   text-align: center;
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  p,
-  li {
-    font-size: 1.2rem;
+  p {
+    font-size: 0.6rem;
+    line-height: 1.5;
     margin-bottom: 0.5rem;
   }
+`;
 
-  ul {
-    list-style: none;
-    padding: 0;
-  }
+export const SpanContainer = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.2rem;
+  text-shadow: 0px 0px 0px 1px;
+  font-weight: 900;
+`;
 
-  li::before {
-    content: "✓ ";
-    color: #4caf50;
+export const TypingContainer = styled.h2`
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.primary};
+  text-shadow: 0px 0px 0px 1px;
+  line-height: 1.5;
+  text-align: center;
+`;
+
+export const ImageContainer = styled.div<{
+  movement: { x: number; y: number };
+}>`
+  width: 320px;
+  height: auto;
+  margin: 0 auto;
+  perspective: 800px; /* Define a profundidade para o efeito 3D */
+
+  img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.1s ease-out; /* Suaviza o movimento */
+    transform: ${({ movement }) =>
+      `rotateX(${(movement.y - window.innerHeight / 2) / 20}deg) 
+       rotateY(${(movement.x - window.innerWidth / 2) / 20}deg)`};
   }
 `;
