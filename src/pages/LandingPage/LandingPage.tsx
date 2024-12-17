@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
 import Button from "../../components/Button/button";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import { useMoviment3d } from "../../hooks/useMoviment3d";
 import {
   BackgroundContainer,
   Content,
@@ -9,28 +10,8 @@ import {
 } from "./landingPageStyles";
 
 const LandingPage = () => {
-  const [movement, setMovement] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (event: MouseEvent) => {
-    const { clientX: mouseX, clientY: mouseY } = event;
-    setMovement({ x: mouseX, y: mouseY });
-  };
-
-  const handleTouchMove = (event: TouchEvent) => {
-    const { clientX: touchX, clientY: touchY } = event.touches[0];
-    setMovement({ x: touchX, y: touchY });
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-
-    window.addEventListener("touchmove", handleTouchMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
-    };
-  }, []);
+  const isMobile = useIsMobile();
+  const { movement } = useMoviment3d();
 
   return (
     <BackgroundContainer>
@@ -41,22 +22,28 @@ const LandingPage = () => {
         </TypingContainer>
 
         <p>
-          Tudo o que você precisa saber sobre o universo Rick and Morty está
-          aqui.
+          Explore o universo de Rick and Morty de maneira única! Pesquise
+          personagens por nome e status, navegue pela lista completa, descubra
+          detalhes exclusivos e acompanhe a evolução dessa incrível série. Tudo
+          o que você precisa saber sobre os personagens está aqui!
         </p>
-      </Content>
 
+        {!isMobile && (
+          <>
+            <Button text="Descubra tudo" redirectTo="/persons" />
+          </>
+        )}
+      </Content>
       <ImageContainer movement={movement}>
         {" "}
-        <img
-          src="/public/rickmortyportal.png"
-          alt="Ricky and Morty saindo do portal"
-        />
+        <img src="/public/giftest.gif" alt="Ricky and Morty saindo do portal" />
       </ImageContainer>
 
-      <div>
-        <Button text="Ver personagens" redirectTo="/persons" />
-      </div>
+      {isMobile && (
+        <>
+          <Button text="Ver personagens" redirectTo="/persons" />
+        </>
+      )}
     </BackgroundContainer>
   );
 };
