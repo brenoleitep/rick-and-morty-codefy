@@ -1,4 +1,4 @@
-import Button from "../../components/Button/button";
+import Button from "../../components/Button/Button";
 import { Music } from "../../components/Music";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import {
