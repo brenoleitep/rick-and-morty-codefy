@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import { AllPersonsContainer } from "./AllPersons.style";
 
 const AllPersons = () => {
-  const { data, error, isLoading } = useFetchCharacters();
+  const { error, isLoading } = useFetchCharacters();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>F...</p>;
