@@ -1,34 +1,28 @@
-import { useState } from "react";
 import "./App.css";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useFetchCharacters } from "./hooks/useFetchCharacters";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { data, error, isLoading } = useFetchCharacters();
+
+  console.log(data);
+  if (error) return <p>Erro ao buscar personagens!</p>;
+
+  if (isLoading) return <p>Carregando...</p>;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Personagens de Rick and Morty</h1>
+
+      <ul>
+        {data?.results.map((character) => (
+          <li key={character.id}>
+            <h2>{character.name}</h2>
+            <p>{character.species}</p>
+            <img src={character.image} alt={character.name} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
