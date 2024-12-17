@@ -62,7 +62,7 @@ export const ImageContainer = styled.div`
 
   img {
     width: 100%;
-    min-height: 360px;
+    min-height: 280px;
   }
 
   @media (min-width: 768px) {
