@@ -54,9 +54,7 @@ export const TypingContainer = styled.h2`
   line-height: 1.5;
 `;
 
-export const ImageContainer = styled.div<{
-  movement: { x: number; y: number };
-}>`
+export const ImageContainer = styled.div`
   width: 320px;
   height: auto;
   margin: 0 auto;

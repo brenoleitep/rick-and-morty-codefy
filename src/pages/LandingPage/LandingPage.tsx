@@ -1,7 +1,6 @@
 import Button from "../../components/Button/button";
 import { Music } from "../../components/Music";
 import { useIsMobile } from "../../hooks/useIsMobile";
-import { useMoviment3d } from "../../hooks/useMoviment3d";
 import {
   BackgroundContainer,
   Content,
@@ -12,7 +11,6 @@ import {
 
 const LandingPage = () => {
   const isMobile = useIsMobile();
-  const { movement } = useMoviment3d();
 
   return (
     <BackgroundContainer>
@@ -37,7 +35,7 @@ const LandingPage = () => {
           </>
         )}
       </Content>
-      <ImageContainer movement={movement}>
+      <ImageContainer>
         {" "}
         <img src="/public/giftest.gif" alt="Ricky and Morty saindo do portal" />
       </ImageContainer>
