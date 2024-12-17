@@ -8,6 +8,7 @@ export const ButtonContainer = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.primary};
 
   width: auto;
+  max-width: 280px;
   height: 4rem;
 
   font-size: 0.8rem;
