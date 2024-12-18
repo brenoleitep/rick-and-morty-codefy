@@ -49,7 +49,7 @@ const FilterPersons = () => {
 
         {!isMobile && (
           <>
-            <Select
+            <Select<{ value: string; label: string }>
               options={speciesOptions}
               placeholder="Filtrar por espécie"
               onChange={handleSpeciesChange}
@@ -57,7 +57,7 @@ const FilterPersons = () => {
               isClearable
             />
 
-            <Select
+            <Select<{ value: string; label: string }>
               options={statusOptions}
               placeholder="Filtrar por status"
               onChange={handleStatusChange}

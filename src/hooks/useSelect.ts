@@ -21,6 +21,15 @@ export const useSelect = () => {
     status: "",
     species: "",
   });
+  const [selectedSpecies, setSelectedSpecies] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+
+  const [selectedStatus, setSelectedStatus] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -54,10 +63,27 @@ export const useSelect = () => {
     return matchesName && matchesSpecies && matchesStatus;
   });
 
+  const handleSpeciesChange = (
+    selectedOption: SingleValue<{ value: string; label: string }>,
+  ) => {
+    setSelectedSpecies(selectedOption);
+    handleSelectChange(selectedOption, "species");
+  };
+
+  const handleStatusChange = (
+    selectedOption: SingleValue<{ value: string; label: string }>,
+  ) => {
+    setSelectedStatus(selectedOption);
+    handleSelectChange(selectedOption, "status");
+  };
+
   return {
     filteredCharacters,
-    handleSelectChange,
+    handleSpeciesChange,
+    handleStatusChange,
     handleInputChange,
+    selectedSpecies,
+    selectedStatus,
     speciesOptions,
     statusOptions,
     filters,
