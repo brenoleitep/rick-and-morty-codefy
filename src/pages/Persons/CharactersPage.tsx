@@ -1,4 +1,4 @@
-import AllPersons from "../../components/AllPerson/AllPersons";
+import FilterPersons from "../../components/FilterPersons/FilterPersons";
 import Header from "../../components/Header/Header";
 
 const CharactersPage = () => {
@@ -6,7 +6,7 @@ const CharactersPage = () => {
     <div>
       <Header />
 
-      <AllPersons />
+      <FilterPersons />
     </div>
   );
 };
