@@ -26,7 +26,7 @@ export const Tag = styled.div`
   color: black;
 
   padding: 0.2rem;
-  width: 50px;
+  width: auto;
 
   text-transform: uppercase;
   font-size: 0.9rem;
