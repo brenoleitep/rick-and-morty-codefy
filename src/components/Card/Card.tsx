@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 import {
   CardContainer,
   CardImage,
@@ -43,6 +44,8 @@ const Card: React.FC<CardProps> = ({
         <TagAtributes>Espécie: {species}</TagAtributes>
         <TagAtributes>Loc: {current_location}</TagAtributes>
       </TagContainer>
+
+      <Button text="Ver mais" />
     </CardContainer>
   );
 };
