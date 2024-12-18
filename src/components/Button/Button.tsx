@@ -3,13 +3,13 @@ import { ButtonContainer } from "./Button.styles";
 
 interface ButtonProps {
   text: string;
-  redirectTo: string;
+  redirectTo?: string;
 }
 
 const Button = ({ text, redirectTo }: ButtonProps) => {
   return (
     <ButtonContainer>
-      <Link to={redirectTo}>{text}</Link>
+      <Link to={redirectTo ? redirectTo : ""}>{text}</Link>
     </ButtonContainer>
   );
 };
