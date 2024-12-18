@@ -25,6 +25,10 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   padding: 20px 0;
   font-size: 1rem;
   line-height: 1.5;
