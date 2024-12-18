@@ -36,7 +36,9 @@ const Card: React.FC<CardProps> = ({
       <CardImage src={imageUrl} alt={name} />
 
       <TagContainer>
-        <TagAtributes>{totalEpisodes} Episódios</TagAtributes>
+        <TagAtributes>
+          {totalEpisodes} {totalEpisodes === 1 ? "Episódio" : "Episódios"}{" "}
+        </TagAtributes>
         <TagAtributes>Origem: {origin}</TagAtributes>
         <TagAtributes>Espécie: {species}</TagAtributes>
         <TagAtributes>Loc: {current_location}</TagAtributes>
