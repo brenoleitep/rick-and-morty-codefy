@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# Rick and Morty - Projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![RickandMorty](./src/assets/logo.png)
+Um projeto 100% front-end desenvolvido por mim (Breno Leite) com o intuito de mostrar alguns pontos sobre conhecimento técnico, versionamento de código e arquitetura.
 
-Currently, two official plugins are available:
+## Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- <a href="#funcionalidades"> Funcionalidades do projeto;</a>
+- <a href="#layout"> Layout;</a>
+- <a href="#tecnologias"> Tecnologias utilizadas;</a>
+- <a href="#demonstração"> Demonstração;</a>
+- <a href="#rodar"> Como rodar o projeto;</a>
 
-## Expanding the ESLint configuration
+## Funcionalidades do projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [x] Visualização de todos os personagens de Rick and Morty
+- [x] Visualização filtrada por nome e status de todos os personagens de Rick and Morty
+- [x] Visualização em modal de personagens de Rick and Morty
+- [x] Pesquisar por personagens pelo nome
+- [x] Responsividade
 
-- Configure the top-level `parserOptions` property like this:
+## Layout
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![alt text](/src/assets/image.png)
+![alt text](/src/assets/image-1.png)
+![alt text](/src/assets/image-2.png)
+![alt text](/src/assets/image-3.png)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Tecnologias utilizadas
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- ReactJs
+- Javascript
+- React-router-dom
+- Typescript
+- Axios
+- React Query
+- React Modal
+- React Select
+- Styled-components
+- Prettier/Eslint
+- Vite
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Demonstração
+
+<a href="https://rick-and-morty-codefy.vercel.app/">Visualização do projeto</a>
+
+## Como rodar o projeto
+
+1.  Clone o repositório na sua maquina;
+2.  Abra o seu terminal
+3.  Instale as dependencias com Yarn
+4.  Yarn run build para buildar o projeto
+5.  Yarn run dev
+6.  Abrir localhost na porta indicada pelo terminal
+
+# Espero que tenha gostado! :)
