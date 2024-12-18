@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   width: 300px;
-  height: 360;
+  height: 400px;
   background: linear-gradient(135deg, #0e2d50, #49774b, #0e2d50);
   display: flex;
   flex-direction: column;
@@ -42,8 +42,8 @@ export const Tag = styled.div`
 
 export const TagContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   gap: 0.2rem;
   flex-wrap: wrap;
 

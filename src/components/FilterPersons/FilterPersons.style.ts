@@ -42,7 +42,6 @@ export const FilterDropdownContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;
   color: black;
 
   input {
@@ -89,4 +88,15 @@ export const Dropdown = styled.div`
   transition:
     transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
+`;
+
+export const FilterCards = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin-right: 10px;
+  }
 `;

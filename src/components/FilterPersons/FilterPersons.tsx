@@ -7,6 +7,7 @@ import Card from "../Card/Card";
 import {
   AllPersonsContainer,
   Dropdown,
+  FilterCards,
   FilterDropdown,
   FilterDropdownContainer,
   FilterIcon,
@@ -106,7 +107,7 @@ const FilterPersons = () => {
         </FilterDropdown>
       </FilterDropdownContainer>
 
-      <div>
+      <FilterCards>
         {filteredCharacters?.length ? (
           filteredCharacters.map((character) => (
             <Card
@@ -127,7 +128,7 @@ const FilterPersons = () => {
         ) : (
           <p>Nenhum personagem encontrado com esses filtros.</p>
         )}
-      </div>
+      </FilterCards>
     </AllPersonsContainer>
   );
 };
