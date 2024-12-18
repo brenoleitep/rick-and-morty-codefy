@@ -1,5 +1,6 @@
-import React from "react";
-import Button from "../Button/Button";
+import React, { useState } from "react";
+import CustomModal from "../CustomModal/CustomModal";
+import { CustomModalButton } from "../CustomModal/CustomModal.styles";
 import {
   CardContainer,
   CardImage,
@@ -28,6 +29,11 @@ const Card: React.FC<CardProps> = ({
   species,
   current_location,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <CardContainer>
       <Tag>
@@ -45,7 +51,13 @@ const Card: React.FC<CardProps> = ({
         <TagAtributes>Loc: {current_location}</TagAtributes>
       </TagContainer>
 
-      <Button text="Ver mais" />
+      <CustomModalButton>
+        <button onClick={openModal}>Ver localização</button>
+        <CustomModal isOpen={isModalOpen} onClose={closeModal} title={name}>
+          <img src={imageUrl} alt={name} />
+          <p>Localização: {current_location}</p>
+        </CustomModal>
+      </CustomModalButton>
     </CardContainer>
   );
 };

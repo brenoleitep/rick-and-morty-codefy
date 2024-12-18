@@ -68,11 +68,16 @@ export const FilterDropdown = styled.div`
   gap: 5px;
   cursor: pointer;
   flex-direction: column;
+  transition: transform 0.3s ease-in-out;
 `;
 
 export const FilterIcon = styled.div`
   color: white;
   font-size: 30px;
+
+  transition:
+    transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 `;
 
 export const Dropdown = styled.div`
@@ -96,7 +101,7 @@ export const Dropdown = styled.div`
 
   transition:
     transform 0.3s ease-in-out,
-    opacity 0.3s ease-in-out;
+    opacity 2s ease-in-out;
 `;
 
 export const FilterCards = styled.div`
