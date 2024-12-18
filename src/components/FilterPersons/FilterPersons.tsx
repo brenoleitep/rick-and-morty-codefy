@@ -11,6 +11,7 @@ import {
   FilterDropdown,
   FilterDropdownContainer,
   FilterIcon,
+  FilterInputContainer,
   SelectContainer,
   SelectTitle,
 } from "./FilterPersons.style";
@@ -39,14 +40,16 @@ const FilterPersons = () => {
   return (
     <AllPersonsContainer>
       <FilterDropdownContainer>
-        <input
-          type="text"
-          name="name"
-          placeholder="Pesquisar"
-          value={filters.name}
-          disabled={isDropdownOpen}
-          onChange={handleInputChange}
-        />
+        <FilterInputContainer>
+          <input
+            type="text"
+            name="name"
+            placeholder="Pesquisar"
+            value={filters.name}
+            disabled={isDropdownOpen}
+            onChange={handleInputChange}
+          />
+        </FilterInputContainer>
 
         {!isMobile && (
           <>
@@ -69,7 +72,7 @@ const FilterPersons = () => {
         )}
 
         <FilterDropdown>
-          {isDropdownOpen && (
+          {isDropdownOpen && isMobile && (
             <Dropdown>
               <SelectContainer>
                 <SelectTitle>
@@ -98,7 +101,7 @@ const FilterPersons = () => {
 
           {isMobile && (
             <>
-              <p>Filtros</p>
+              <p style={{ color: "white" }}>Filtros</p>
               <FilterIcon onClick={handleDropdown}>
                 <FaFilter />
               </FilterIcon>

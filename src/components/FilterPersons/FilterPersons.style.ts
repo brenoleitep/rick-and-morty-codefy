@@ -44,17 +44,25 @@ export const FilterDropdownContainer = styled.div`
   justify-content: space-between;
   color: black;
 
-  input {
-    max-width: 50%;
-    font-size: 10px;
-  }
-
   p {
     font-size: 8px;
   }
 `;
 
+export const FilterInputContainer = styled.div`
+  input {
+    max-width: 363px;
+    width: 80%;
+    height: 38px;
+    font-size: 10px;
+  }
+`;
+
 export const FilterDropdown = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
+
   display: flex;
   align-items: center;
   gap: 5px;
@@ -63,6 +71,7 @@ export const FilterDropdown = styled.div`
 `;
 
 export const FilterIcon = styled.div`
+  color: white;
   font-size: 30px;
 `;
 
@@ -91,12 +100,16 @@ export const Dropdown = styled.div`
 `;
 
 export const FilterCards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 10px;
-    margin-right: 10px;
+    justify-content: space-between;
+    gap: 20px;
   }
 `;
