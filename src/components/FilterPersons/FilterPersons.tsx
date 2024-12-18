@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import Select from "react-select";
+import notFound from "../../assets/notFound.gif";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useSelect } from "../../hooks/useSelect";
 import Card from "../Card/Card";
@@ -129,7 +130,7 @@ const FilterPersons = () => {
             />
           ))
         ) : (
-          <p>Nenhum personagem encontrado com esses filtros.</p>
+          <img src={notFound} alt="" />
         )}
       </FilterCards>
     </AllPersonsContainer>

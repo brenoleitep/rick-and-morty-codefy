@@ -4,6 +4,7 @@ export const AllPersonsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-width: 80vw;
 
   h2 {
     font-size: 0.9rem;
@@ -55,6 +56,14 @@ export const FilterInputContainer = styled.div`
     width: 80%;
     height: 38px;
     font-size: 10px;
+  }
+
+  @media (min-width: 768px) {
+    width: 363px;
+
+    input {
+      width: 100%;
+    }
   }
 `;
 
@@ -116,5 +125,12 @@ export const FilterCards = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
+  }
+
+  img {
+    width: 330px;
+    height: 330px;
+    object-fit: cover;
+    margin: 0 auto;
   }
 `;
