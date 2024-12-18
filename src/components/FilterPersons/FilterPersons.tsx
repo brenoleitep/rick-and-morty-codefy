@@ -1,9 +1,21 @@
+import { useState } from "react";
+import { FaFilter } from "react-icons/fa";
 import Select from "react-select";
 import { useSelect } from "../../hooks/useSelect";
 import Card from "../Card/Card";
-import { AllPersonsContainer, SelectContainer } from "./FilterPersons.style";
+import {
+  AllPersonsContainer,
+  Dropdown,
+  FilterDropdown,
+  FilterDropdownContainer,
+  FilterIcon,
+  SelectContainer,
+  SelectTitle,
+} from "./FilterPersons.style";
 
 const FilterPersons = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const {
     speciesOptions,
     statusOptions,
@@ -13,32 +25,55 @@ const FilterPersons = () => {
     filteredCharacters,
   } = useSelect();
 
+  const handleDropdown = () => {
+    setIsDropdownOpen((prevState) => !prevState);
+  };
+
   return (
     <AllPersonsContainer>
-      <div>
+      <FilterDropdownContainer>
         <input
           type="text"
           name="name"
-          placeholder="Filtrar por nome"
+          placeholder="Pesquisar"
           value={filters.name}
+          disabled={isDropdownOpen}
           onChange={handleInputChange}
         />
-        <SelectContainer>
-          <Select
-            options={speciesOptions}
-            placeholder="Filtrar por espécie"
-            onChange={(option) => handleSelectChange(option, "species")}
-            isClearable
-          />
 
-          <Select
-            options={statusOptions}
-            placeholder="Filtrar por status"
-            onChange={(option) => handleSelectChange(option, "status")}
-            isClearable
-          />
-        </SelectContainer>
-      </div>
+        <FilterDropdown>
+          {isDropdownOpen && (
+            <Dropdown>
+              <SelectContainer>
+                <SelectTitle>
+                  <h2>Filtros</h2>
+                  <h2 onClick={handleDropdown}>X</h2>
+                </SelectTitle>
+
+                <Select
+                  options={speciesOptions}
+                  placeholder="Filtrar por espécie"
+                  onChange={(option) => handleSelectChange(option, "species")}
+                  isClearable
+                />
+
+                <Select
+                  options={statusOptions}
+                  placeholder="Filtrar por status"
+                  onChange={(option) => handleSelectChange(option, "status")}
+                  isClearable
+                />
+              </SelectContainer>
+            </Dropdown>
+          )}
+
+          <p>Filtros</p>
+
+          <FilterIcon onClick={handleDropdown}>
+            <FaFilter />
+          </FilterIcon>
+        </FilterDropdown>
+      </FilterDropdownContainer>
 
       <div>
         {filteredCharacters?.length ? (
