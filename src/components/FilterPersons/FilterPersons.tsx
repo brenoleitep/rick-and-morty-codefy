@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import Select from "react-select";
-import notFound from "../../assets/notFound.gif";
+import notFound from "../../assets/nothinghere.gif";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useSelect } from "../../hooks/useSelect";
 import Card from "../Card/Card";
