@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import Select from "react-select";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import { useSelect } from "../../hooks/useSelect";
 import Card from "../Card/Card";
 import {
@@ -16,12 +17,17 @@ import {
 const FilterPersons = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const isMobile = useIsMobile();
+
   const {
     speciesOptions,
     statusOptions,
+    selectedSpecies,
+    selectedStatus,
     filters,
     handleInputChange,
-    handleSelectChange,
+    handleSpeciesChange,
+    handleStatusChange,
     filteredCharacters,
   } = useSelect();
 
@@ -41,6 +47,26 @@ const FilterPersons = () => {
           onChange={handleInputChange}
         />
 
+        {!isMobile && (
+          <>
+            <Select
+              options={speciesOptions}
+              placeholder="Filtrar por espécie"
+              onChange={handleSpeciesChange}
+              value={selectedSpecies}
+              isClearable
+            />
+
+            <Select
+              options={statusOptions}
+              placeholder="Filtrar por status"
+              onChange={handleStatusChange}
+              value={selectedStatus}
+              isClearable
+            />
+          </>
+        )}
+
         <FilterDropdown>
           {isDropdownOpen && (
             <Dropdown>
@@ -53,25 +79,30 @@ const FilterPersons = () => {
                 <Select
                   options={speciesOptions}
                   placeholder="Filtrar por espécie"
-                  onChange={(option) => handleSelectChange(option, "species")}
+                  onChange={handleSpeciesChange}
+                  value={selectedSpecies}
                   isClearable
                 />
 
                 <Select
                   options={statusOptions}
                   placeholder="Filtrar por status"
-                  onChange={(option) => handleSelectChange(option, "status")}
+                  onChange={handleStatusChange}
+                  value={selectedStatus}
                   isClearable
                 />
               </SelectContainer>
             </Dropdown>
           )}
 
-          <p>Filtros</p>
-
-          <FilterIcon onClick={handleDropdown}>
-            <FaFilter />
-          </FilterIcon>
+          {isMobile && (
+            <>
+              <p>Filtros</p>
+              <FilterIcon onClick={handleDropdown}>
+                <FaFilter />
+              </FilterIcon>
+            </>
+          )}
         </FilterDropdown>
       </FilterDropdownContainer>
 

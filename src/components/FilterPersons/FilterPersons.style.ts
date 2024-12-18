@@ -25,6 +25,10 @@ export const SelectContainer = styled.div`
     max-width: 320px;
     font-size: 12px;
   }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const SelectTitle = styled.div`
@@ -39,7 +43,7 @@ export const FilterDropdownContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  color: white;
+  color: black;
 
   input {
     max-width: 50%;
