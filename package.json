@@ -16,10 +16,13 @@
     "@fontsource/press-start-2p": "^5.1.0",
     "@tanstack/react-query": "^5.62.7",
     "axios": "^1.7.9",
+    "chroma-js": "^3.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "react-select": "^5.9.0",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.13"
   },
   "devDependencies": {

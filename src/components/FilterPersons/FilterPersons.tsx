@@ -1,7 +1,21 @@
 import { useState } from "react";
+import Select, { SingleValue } from "react-select";
 import { useFetchCharacters } from "../../hooks/useFetchCharacters";
 import Card from "../Card/Card";
-import { AllPersonsContainer } from "./FilterPersons.style";
+import { AllPersonsContainer, SelectContainer } from "./FilterPersons.style";
+
+// Opções para o react-select
+const speciesOptions = [
+  { value: "", label: "Todas as espécies" },
+  { value: "Human", label: "Humano" },
+  { value: "Alien", label: "Alien" },
+];
+
+const statusOptions = [
+  { value: "", label: "Todos os status" },
+  { value: "Alive", label: "Vivo" },
+  { value: "Dead", label: "Morto" },
+];
 
 const FilterPersons = () => {
   const { data, error, isLoading } = useFetchCharacters();
@@ -11,9 +25,8 @@ const FilterPersons = () => {
     species: "",
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ): void => {
+  // Atualiza os filtros com base no input de texto
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFilters((prev) => ({
       ...prev,
@@ -21,9 +34,22 @@ const FilterPersons = () => {
     }));
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>F...</p>;
+  // Atualiza filtros com react-select
+  const handleSelectChange = (
+    selectedOption: SingleValue<{ value: string; label: string }>,
+    name: keyof typeof filters
+  ) => {
+    setFilters((prev) => ({
+      ...prev,
+      [name]: selectedOption?.value || "",
+    }));
+  };
 
+  // Exibição de loading ou erros
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Erro ao carregar os personagens.</p>;
+
+  // Filtrando os personagens
   const filteredCharacters = data?.results.filter((character) => {
     const matchesName = character.name
       ?.toLowerCase()
@@ -40,8 +66,6 @@ const FilterPersons = () => {
 
   return (
     <AllPersonsContainer>
-      <h2>Personagens filtrados</h2>
-
       <div>
         <input
           type="text"
@@ -50,24 +74,21 @@ const FilterPersons = () => {
           value={filters.name}
           onChange={handleInputChange}
         />
-        <select
-          name="species"
-          value={filters.species}
-          onChange={handleInputChange}
-        >
-          <option value="">Todas as espécies</option>
-          <option value="Human">Humano</option>
-          <option value="Alien">Alien</option>
-        </select>
-        <select
-          name="status"
-          value={filters.status}
-          onChange={handleInputChange}
-        >
-          <option value="">Todos os status</option>
-          <option value="Alive">Vivo</option>
-          <option value="Dead">Morto</option>
-        </select>
+        <SelectContainer>
+          <Select
+            options={speciesOptions}
+            placeholder="Filtrar por espécie"
+            onChange={(option) => handleSelectChange(option, "species")}
+            isClearable
+          />
+
+          <Select
+            options={statusOptions}
+            placeholder="Filtrar por status"
+            onChange={(option) => handleSelectChange(option, "status")}
+            isClearable
+          />
+        </SelectContainer>
       </div>
 
       <div>
@@ -92,15 +113,6 @@ const FilterPersons = () => {
           <p>Nenhum personagem encontrado com esses filtros.</p>
         )}
       </div>
-      <Card
-        imageUrl="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-        name="Rick Sanchez"
-        status="Vivo"
-        totalEpisodes={51}
-        origin="C-137 Earth"
-        species="Human"
-        current_location="Earth"
-      />
     </AllPersonsContainer>
   );
 };

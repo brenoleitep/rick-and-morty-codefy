@@ -9,4 +9,16 @@ export const AllPersonsContainer = styled.div`
     font-size: 0.9rem;
     color: white;
   }
+
+  input {
+    padding: 1rem;
+  }
+`;
+
+export const SelectContainer = styled.div`
+  div {
+    padding: 0.1rem;
+    max-width: 320px;
+    font-size: 12px;
+  }
 `;
