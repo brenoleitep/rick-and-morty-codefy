@@ -1,12 +1,11 @@
 import logo from "../../assets/logo.png";
+import { HeaderContainer } from "./Header.styles";
 
 const Header = () => {
   return (
-    <header>
+    <HeaderContainer>
       <img src={logo} alt="Rick and Morty logo" />
-
-      {/* <Navbar /> */}
-    </header>
+    </HeaderContainer>
   );
 };
 
