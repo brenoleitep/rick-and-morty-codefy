@@ -1,10 +1,10 @@
-import MainRoutes from "./routes";
+import { Outlet } from "react-router-dom";
 import { Container } from "./styles/global";
 
 function App() {
   return (
     <Container>
-      <MainRoutes />
+      <Outlet />
     </Container>
   );
 }

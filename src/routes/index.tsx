@@ -1,14 +1,15 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import CharactersPage from "../pages/Persons/CharactersPage";
 
-const MainRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/persons" element={<CharactersPage />} />
-    </Routes>
-  );
-};
-
-export default MainRoutes;
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { index: true, element: <LandingPage /> },
+      { path: "persons", element: <CharactersPage /> },
+    ],
+  },
+]);
